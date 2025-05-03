@@ -1,0 +1,13 @@
+Private cloud is a simple electron app that allows users to store files, images and access them locally or externally if they expose the ports.
+
+It plays two roles:
+
+If role host is chosen, then this PC becomes used as a network storage
+
+If role consumer is chosen, then this PC can access other hosts on the network. When we choose one, we can see what files are there and edit/add them per host.
+
+There is possibility to upload any file, where images can be seen also in a separate tab, filtered by categories.
+
+This app can be ran by mobile devices, as well as windows and mac (arm), and windows on arm.
+
+For frontend, we use angular 19 and TypeScript everywhere.
