@@ -1,0 +1,40 @@
+<div class="file-list">
+  <div class="storage-info">
+    <h3>Storage Information</h3>
+    <div class="storage-details">
+      <div class="storage-item">
+        <span>Total Space:</span>
+        <span>{{ formatBytes(storageInfo.total) }}</span>
+      </div>
+      <div class="storage-item">
+        <span>Used Space:</span>
+        <span>{{ formatBytes(storageInfo.used) }}</span>
+      </div>
+      <div class="storage-item">
+        <span>Free Space:</span>
+        <span>{{ formatBytes(storageInfo.free) }}</span>
+      </div>
+    </div>
+    <div class="storage-bar">
+      <div class="used" [style.width.%]="(storageInfo.used / storageInfo.total) * 100"></div>
+    </div>
+  </div>
+
+  <h2>Files</h2>
+  <app-file-upload></app-file-upload>
+  
+  <div class="files">
+    <div *ngIf="files.length === 0" class="no-files">
+      No files available
+    </div>
+    <div *ngFor="let file of files" class="file-item">
+      <div class="file-info">
+        <span class="file-name">{{ file.name }}</span>
+        <span class="file-size">{{ formatBytes(file.size) }}</span>
+        <span class="file-type">{{ file.type }}</span>
+        <span class="file-date">{{ file.uploadDate | date:'medium' }}</span>
+      </div>
+      <button class="download-btn" (click)="downloadFile(file)">Download</button>
+    </div>
+  </div>
+</div> 

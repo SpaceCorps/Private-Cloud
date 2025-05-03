@@ -1,0 +1,11 @@
+<div class="image-gallery">
+  <h2>Image Gallery</h2>
+  <div class="images">
+    <div *ngIf="images.length === 0" class="no-images">
+      No images available
+    </div>
+    <div *ngFor="let image of images" class="image-item">
+      <!-- TODO: Add image item template -->
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,24 @@
+<div class="role-selector">
+  <h2>Choose Your Role</h2>
+  <div class="role-options">
+    <div class="role-card" (click)="selectRole('host')">
+      <h3>Host</h3>
+      <p>Share your files and make them accessible to other devices on the network</p>
+      <ul>
+        <li>Store files locally</li>
+        <li>Share with other devices</li>
+        <li>Manage access permissions</li>
+      </ul>
+    </div>
+    
+    <div class="role-card" (click)="selectRole('consumer')">
+      <h3>Consumer</h3>
+      <p>Access files shared by other devices on the network</p>
+      <ul>
+        <li>Browse shared files</li>
+        <li>Download content</li>
+        <li>View images</li>
+      </ul>
+    </div>
+  </div>
+</div> 

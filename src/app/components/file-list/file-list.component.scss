@@ -1,0 +1,102 @@
+.file-list {
+  h2, h3 {
+    margin-bottom: 1rem;
+  }
+
+  .storage-info {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    .storage-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .storage-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem;
+      background: #f8f9fa;
+      border-radius: 4px;
+
+      span:first-child {
+        color: #666;
+      }
+
+      span:last-child {
+        font-weight: 500;
+      }
+    }
+
+    .storage-bar {
+      height: 8px;
+      background: #e9ecef;
+      border-radius: 4px;
+      overflow: hidden;
+
+      .used {
+        height: 100%;
+        background: #3498db;
+        transition: width 0.3s ease;
+      }
+    }
+  }
+
+  .files {
+    margin-top: 2rem;
+  }
+
+  .no-files {
+    text-align: center;
+    color: #666;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+  }
+
+  .file-item {
+    background: white;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .file-info {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 1rem;
+      align-items: center;
+      flex: 1;
+
+      .file-name {
+        font-weight: 500;
+      }
+
+      .file-size, .file-type, .file-date {
+        color: #666;
+        font-size: 0.9rem;
+      }
+    }
+
+    .download-btn {
+      padding: 0.5rem 1rem;
+      background-color: #3498db;
+      color: white;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #2980b9;
+      }
+    }
+  }
+} 

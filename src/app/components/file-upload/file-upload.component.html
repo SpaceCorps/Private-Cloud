@@ -1,0 +1,9 @@
+<div class="file-upload">
+  <input type="file" (change)="onFileSelected($event)" multiple [disabled]="uploading">
+  <button [disabled]="uploading">
+    {{ uploading ? 'Uploading...' : 'Upload Files' }}
+  </button>
+  <div *ngIf="error" class="error">
+    {{ error }}
+  </div>
+</div> 

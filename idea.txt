@@ -10,4 +10,5 @@ There is possibility to upload any file, where images can be seen also in a sepa
 
 This app can be ran by mobile devices, as well as windows and mac (arm), and windows on arm.
 
-For frontend, we use angular 19 and TypeScript everywhere.
+For frontend, we use angular 19 and TypeScript everywhere (no javascript)
+Do not use html inline templates, for html and css code create separate html and scss files.

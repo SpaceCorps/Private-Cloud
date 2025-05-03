@@ -1,0 +1,30 @@
+.image-gallery {
+  h2 {
+    margin-bottom: 2rem;
+  }
+
+  .images {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .no-images {
+    text-align: center;
+    color: #666;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    grid-column: 1 / -1;
+  }
+
+  .image-item {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    aspect-ratio: 1;
+    overflow: hidden;
+  }
+} 
