@@ -1,0 +1,59 @@
+<h2>Host Dashboard</h2>
+<div class="host-toggle">
+  <label class="switch">
+    <input type="checkbox" [(ngModel)]="hostingEnabled">
+    <span class="slider round"></span>
+  </label>
+  <span class="host-toggle-label">Enable this PC as a Host</span>
+</div>
+<div *ngIf="hostingEnabled">
+  <div class="drives-section">
+    <h3>Available Drives</h3>
+    <div *ngFor="let drive of drives" class="drive-item">
+      <div>
+        <strong>{{ drive.description || drive.device }}</strong>
+        <span *ngIf="drive.mountpoints.length"> ({{ getMountpoints(drive) }})</span>
+        <span *ngIf="drive.size"> - {{ drive.size | number }} bytes</span>
+      </div>
+      <div class="drive-controls">
+        <label>
+          <input type="checkbox" [(ngModel)]="networkStorage[drive.device].enabled" (change)="onEnableDrive(drive.device, networkStorage[drive.device].enabled)">
+          Enable as network storage
+        </label>
+        <div *ngIf="networkStorage[drive.device].enabled" class="allocation-controls">
+          <input type="range"
+                 [min]="0"
+                 [max]="drive.size"
+                 [step]="1024*1024*10"
+                 [(ngModel)]="networkStorage[drive.device].allocated"
+                 (input)="onAllocateChange(drive.device, networkStorage[drive.device].allocated)">
+          <input type="number"
+                 [min]="0"
+                 [max]="drive.size"
+                 [step]="1024*1024*10"
+                 [(ngModel)]="networkStorage[drive.device].allocated"
+                 (input)="onAllocateChange(drive.device, networkStorage[drive.device].allocated)">
+          <span>{{ networkStorage[drive.device].allocated | number }} bytes</span>
+          <div class="allocation-bar">
+            <div class="allocated" [style.width.%]="(networkStorage[drive.device].allocated / drive.size) * 100"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="network-storage-section" *ngIf="getAllocatedDrives().length">
+    <h3>Network Storage</h3>
+    <div *ngFor="let drive of getAllocatedDrives()" class="network-drive-item">
+      <strong>{{ drive.description || drive.device }}</strong>
+      <span *ngIf="drive.mountpoints.length"> ({{ getMountpoints(drive) }})</span>
+      <span> - Allocated: {{ networkStorage[drive.device].allocated | number }} bytes</span>
+      <div class="allocation-bar">
+        <div class="allocated" [style.width.%]="(networkStorage[drive.device].allocated / drive.size) * 100"></div>
+      </div>
+    </div>
+  </div>
+  <app-file-list></app-file-list>
+</div>
+<div *ngIf="!hostingEnabled" style="margin-top:2rem;">
+  <em>Hosting is disabled. Enable to share files on this PC.</em>
+</div> 

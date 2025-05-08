@@ -4,6 +4,7 @@ import * as fs from 'fs';
 import { v4 as uuidv4 } from 'uuid';
 import type { Request, Response } from 'express';
 import * as os from 'os';
+import * as drivelist from 'drivelist';
 
 const express = require('express');
 const multer = require('multer');
@@ -194,4 +195,16 @@ ipcMain.handle('download-file', async (event: any, fileId: string) => {
   if (filePath) {
     fs.copyFileSync(sourcePath, filePath);
   }
+});
+
+ipcMain.handle('list-drives', async () => {
+  const drives = await drivelist.list();
+  return drives.map(drive => ({
+    device: drive.device,
+    description: drive.description,
+    size: drive.size,
+    mountpoints: drive.mountpoints,
+    isSystem: drive.isSystem,
+    isRemovable: drive.isRemovable || drive.isCard || drive.isUSB
+  }));
 }); 
